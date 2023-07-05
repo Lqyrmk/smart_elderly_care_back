@@ -112,7 +112,7 @@ public class ElderlyController {
             @ApiImplicitParam(name = "elderly", value = "修改后的老人信息", required = true)
     })
     public ResponseResult<Elderly> updateElderly(@RequestBody Elderly elderly) {
-        // 根据id修改订单信息
+        // 根据id修改事件信息
         if (elderlyService.updateById(elderly)) {
             return ResponseResult.success(null, "保存成功！");
         }

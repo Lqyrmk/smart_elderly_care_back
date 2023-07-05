@@ -5,4 +5,9 @@
 
 <mapper namespace="com.elderlycare.mapper.ElderlyMapper">
 
+    <!--Elderly selectEventByIdByStep2(Long elderlyId);-->
+    <select id="selectEventByIdByStep2" resultType="Elderly">
+        select * from `elderly` where elderly_id = #{elderlyId}
+    </select>
+
 </mapper>

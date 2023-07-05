@@ -33,6 +33,6 @@ mybatis-plus:
 #    db-config:
 
   # 配置类型别名所对应的包
-  type-aliases-package: com.lqyrmk.emovie.entity
+  type-aliases-package: com.elderlycare.entity
   # 配置映射文件路径
   mapper-locations: classpath:mybatis/mapper/*.xml

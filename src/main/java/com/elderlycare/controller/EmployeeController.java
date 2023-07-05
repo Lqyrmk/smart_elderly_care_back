@@ -111,7 +111,7 @@ public class EmployeeController {
             @ApiImplicitParam(name = "employee", value = "修改后的工作人员信息", required = true)
     })
     public ResponseResult<Employee> updateEmployee(@RequestBody Employee employee) {
-        // 根据id修改订单信息
+        // 根据id修改工作人员信息
         if (employeeService.updateById(employee)) {
             return ResponseResult.success(null, "保存成功！");
         }

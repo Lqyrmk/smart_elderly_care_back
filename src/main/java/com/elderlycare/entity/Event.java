@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@TableName("event_info")
+@TableName("event")
 public class Event {
 
     @ApiModelProperty("事件id")
@@ -35,10 +35,13 @@ public class Event {
     private String eventLocation;
 
     @ApiModelProperty("事件描述")
-    @TableField("eventDesc")
+    @TableField("event_desc")
     private String eventDescription;
 
     @ApiModelProperty("老人id：和老人信息表的id关联")
     private Long elderlyId;
+
+    @ApiModelProperty("老人")
+    private Elderly elderly;
 
 }
