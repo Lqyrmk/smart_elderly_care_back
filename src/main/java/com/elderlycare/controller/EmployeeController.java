@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 /**
  * @Description
  * @Author YuanmingLiu
@@ -137,6 +139,17 @@ public class EmployeeController {
             return ResponseResult.success("删除成功！");
         }
         return ResponseResult.error("删除失败！");
+    }
+
+    @GetMapping("/statistics/time")
+    @PreAuthorize("hasAnyAuthority('system:use')")
+    @ApiOperation(value = "工作人员离职入职时间数据统计接口", notes = "根据工作人员离职入职时间数据进行统计")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "year", value = "统计年份", required = true)
+    })
+    public ResponseResult<Map<String, Object>> getEmployeeTimeStatistics(Integer year) {
+
+        return employeeService.getEmployeeTimeStatistics(year);
     }
 
 }

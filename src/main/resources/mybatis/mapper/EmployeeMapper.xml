@@ -5,4 +5,18 @@
 
 <mapper namespace="com.elderlycare.mapper.EmployeeMapper">
 
+    <!--int countEmployeeHireMonth(@Param("year") Integer year, @Param("month") Integer month);-->
+    <select id="countEmployeeHireMonth" resultType="int">
+        SELECT count(*)
+        FROM `employee`
+        WHERE YEAR(hire_date) = #{year} and MONTH(hire_date) = #{month}
+    </select>
+
+    <!--int countEmployeeResignMonth(@Param("year") Integer year, @Param("month") Integer month);-->
+    <select id="countEmployeeResignMonth" resultType="int">
+        SELECT count(*)
+        FROM `employee`
+        WHERE YEAR(resign_date) = #{year} and MONTH(resign_date) = #{month}
+    </select>
+
 </mapper>
