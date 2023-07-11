@@ -16,6 +16,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description
@@ -142,4 +143,21 @@ public class VolunteerController {
         return ResponseResult.error("删除失败！");
     }
 
+    /**
+     * @description: 义工访问离开时间数据统计接口
+     * @author: YuanmingLiu
+     * @date: 2023/7/11 19:39
+     * @param: [year]
+     * @return: com.elderlycare.common.ResponseResult<java.util.Map<java.lang.String,java.lang.Object>>
+     **/
+    @GetMapping("/statistics/time")
+    @PreAuthorize("hasAnyAuthority('system:use')")
+    @ApiOperation(value = "义工访问离开时间数据统计接口", notes = "根据义工访问离开时间数据进行统计")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "year", value = "统计年份", required = true)
+    })
+    public ResponseResult<Map<String, Object>> getVolunteerTimeStatistics(Integer year) {
+
+        return volunteerService.getVolunteerTimeStatistics(year);
+    }
 }
