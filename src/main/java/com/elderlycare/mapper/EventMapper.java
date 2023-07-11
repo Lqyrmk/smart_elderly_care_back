@@ -2,8 +2,11 @@ package com.elderlycare.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.elderlycare.entity.Event;
+import com.elderlycare.entity.EventStatistic;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @Description
@@ -21,5 +24,23 @@ public interface EventMapper extends BaseMapper<Event> {
      * @return: com.elderlycare.entity.Event
      **/
     Event selectEventByIdByStep1(@Param("eventId") Long eventId);
+
+    /**
+     * @description: 统计某月份发生的事件数
+     * @author: YuanmingLiu
+     * @date: 2023/7/11 20:01
+     * @param: [year, month]
+     * @return: int
+     **/
+    int countEventMonth(@Param("year") Integer year, @Param("month") Integer month);
+
+    /**
+     * @description: 统计各个地点发生的事件数
+     * @author: YuanmingLiu
+     * @date: 2023/7/11 20:10
+     * @param: [year]
+     * @return: java.util.List<com.elderlycare.entity.EventStatistic>
+     **/
+    List<EventStatistic> countEventLocation(@Param("year") Integer year);
 
 }

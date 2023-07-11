@@ -21,4 +21,24 @@
         select * from `event` where event_id = #{eventId}
     </select>
 
+    <!--int countEventMonth(@Param("year") Integer year, @Param("month") Integer month);-->
+    <select id="countEventMonth" resultType="int">
+        SELECT count(*)
+        FROM `event`
+        WHERE YEAR(event_date) = #{year} and MONTH(event_date) = #{month}
+    </select>
+
+    <resultMap id="eventCountByLocationResultMap" type="EventStatistic">
+        <id column="event_count" property="eventCount"></id>
+        <result column="event_location" property="eventLocation"></result>
+    </resultMap>
+
+    <!--List<EventStatistic> countEventLocation(@Param("year") Integer year);-->
+    <select id="countEventLocation" resultMap="eventCountByLocationResultMap">
+        SELECT count(*) AS event_count, event_location
+        FROM `event`
+        WHERE YEAR(event_date) = #{year}
+        GROUP BY event_location
+    </select>
+
 </mapper>

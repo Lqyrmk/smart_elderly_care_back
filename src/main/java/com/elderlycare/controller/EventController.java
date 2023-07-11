@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 /**
  * @Description
  * @Author YuanmingLiu
@@ -146,5 +148,37 @@ public class EventController {
         return ResponseResult.error("删除失败！");
     }
 
+    /**
+     * @description: 事件发生时间数据统计接口
+     * @author: YuanmingLiu
+     * @date: 2023/7/11 19:54
+     * @param: [year]
+     * @return: com.elderlycare.common.ResponseResult<java.util.Map<java.lang.String,java.lang.Object>>
+     **/
+    @GetMapping("/statistics/time")
+    @PreAuthorize("hasAnyAuthority('system:use')")
+    @ApiOperation(value = "事件发生时间数据统计接口", notes = "根据事件发生时间数据进行统计")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "year", value = "统计年份", required = true)
+    })
+    public ResponseResult<Map<String, Object>> getEventTimeStatistics(Integer year) {
+        return eventService.getEventTimeStatistics(year);
+    }
+
+    /**
+     * @description: 事件发生地点数据统计接口
+     * @author: YuanmingLiu
+     * @date: 2023/7/11 19:54
+     * @param: [year]
+     * @return: com.elderlycare.common.ResponseResult<java.util.Map<java.lang.String,java.lang.Object>>
+     **/
+    @GetMapping("/statistics/location")
+    @PreAuthorize("hasAnyAuthority('system:use')")
+    @ApiOperation(value = "事件发生地点数据统计接口", notes = "根据事件发生地点数据进行统计")
+    @ApiImplicitParams({
+    })
+    public ResponseResult<Map<String, Object>> getEventLocationStatistics(Integer year) {
+        return eventService.getEventLocationStatistics(year);
+    }
 
 }
