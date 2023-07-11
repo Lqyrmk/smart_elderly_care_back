@@ -143,6 +143,13 @@ public class ElderlyController {
         return ResponseResult.error("删除失败！");
     }
 
+    /**
+     * @description: 老人年龄数据统计接口
+     * @author: YuanmingLiu
+     * @date: 2023/7/11 19:47
+     * @param: [ageOffset]
+     * @return: com.elderlycare.common.ResponseResult<java.util.Map<java.lang.String,java.lang.Object>>
+     **/
     @GetMapping("/statistics/age")
     @PreAuthorize("hasAnyAuthority('system:use')")
     @ApiOperation(value = "老人年龄数据统计接口", notes = "根据老人年龄数据进行统计")
@@ -154,6 +161,13 @@ public class ElderlyController {
         return elderlyService.getElderlyAgeStatistics(ageOffset);
     }
 
+    /**
+     * @description: 老人健康情况数据统计接口
+     * @author: YuanmingLiu
+     * @date: 2023/7/11 19:47
+     * @param: []
+     * @return: com.elderlycare.common.ResponseResult<java.util.Map<java.lang.String,java.lang.Object>>
+     **/
     @GetMapping("/statistics/health")
     @PreAuthorize("hasAnyAuthority('system:use')")
     @ApiOperation(value = "老人健康情况数据统计接口", notes = "根据老人健康数据进行统计")

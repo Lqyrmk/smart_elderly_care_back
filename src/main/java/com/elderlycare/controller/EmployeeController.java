@@ -141,6 +141,13 @@ public class EmployeeController {
         return ResponseResult.error("删除失败！");
     }
 
+    /**
+     * @description: 工作人员离职入职时间数据统计接口
+     * @author: YuanmingLiu
+     * @date: 2023/7/11 19:48
+     * @param: [year]
+     * @return: com.elderlycare.common.ResponseResult<java.util.Map<java.lang.String,java.lang.Object>>
+     **/
     @GetMapping("/statistics/time")
     @PreAuthorize("hasAnyAuthority('system:use')")
     @ApiOperation(value = "工作人员离职入职时间数据统计接口", notes = "根据工作人员离职入职时间数据进行统计")
