@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Description
  * @Author YuanmingLiu
@@ -138,6 +141,27 @@ public class ElderlyController {
             return ResponseResult.success("删除成功！");
         }
         return ResponseResult.error("删除失败！");
+    }
+
+    @GetMapping("/statistics/age")
+    @PreAuthorize("hasAnyAuthority('system:use')")
+    @ApiOperation(value = "老人年龄数据统计接口", notes = "根据老人年龄数据进行统计")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "ageOffset", value = "统计老人年龄间隔", required = true)
+    })
+    public ResponseResult<Map<String, Object>> getElderlyAgeStatistics(@RequestParam("ageOffset") Integer ageOffset) {
+
+        return elderlyService.getElderlyAgeStatistics(ageOffset);
+    }
+
+    @GetMapping("/statistics/health")
+    @PreAuthorize("hasAnyAuthority('system:use')")
+    @ApiOperation(value = "老人健康情况数据统计接口", notes = "根据老人健康数据进行统计")
+    @ApiImplicitParams({
+    })
+    public ResponseResult<Map<String, Object>> getElderlyHealthStatistics() {
+
+        return elderlyService.getElderlyHealthStatistics();
     }
 
 }
