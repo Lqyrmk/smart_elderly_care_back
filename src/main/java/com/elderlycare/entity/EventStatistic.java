@@ -25,6 +25,6 @@ public class EventStatistic {
     private String eventLocation;
 
     @ApiModelProperty("事件数量")
-    private String eventCount;
+    private Integer eventCount;
 
 }

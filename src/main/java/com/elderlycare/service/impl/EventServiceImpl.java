@@ -3,6 +3,7 @@ package com.elderlycare.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.elderlycare.common.ResponseResult;
 import com.elderlycare.entity.Event;
+import com.elderlycare.entity.EventStatistic;
 import com.elderlycare.mapper.EventMapper;
 import com.elderlycare.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,9 +52,18 @@ public class EventServiceImpl extends ServiceImpl<EventMapper, Event> implements
     public ResponseResult<Map<String, Object>> getEventLocationStatistics(Integer year) {
         Map<String, Object> statisticsMap = new HashMap<>();
 
-        System.out.println();
+        List<EventStatistic> eventStatistics = eventMapper.countEventLocation(year);
 
-        statisticsMap.put("countLocationList", eventMapper.countEventLocation(year));
+        List<String> locationList = new ArrayList<>();
+        List<Integer> countList = new ArrayList<>();
+
+        for (EventStatistic item : eventStatistics) {
+            locationList.add(item.getEventLocation());
+            countList.add(item.getEventCount());
+        }
+
+        statisticsMap.put("locationList", locationList);
+        statisticsMap.put("countList", countList);
 
         return ResponseResult.success(statisticsMap, "事件发生地点数据统计完成");
     }
