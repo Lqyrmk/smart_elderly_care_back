@@ -15,7 +15,7 @@ spring:
     password:
   redis:
     host:
-    port: 6379
+    port:
     password:
     lettuce:
       pool:

@@ -96,7 +96,7 @@ public class VolunteerController {
     public ResponseResult<Volunteer> addVolunteer(@RequestBody Volunteer volunteer) {
         //保存义工信息
         if (volunteerService.save(volunteer)) {
-            return ResponseResult.success(null, "添加成功！");
+            return ResponseResult.success(volunteer, "添加成功！");
         }
         return ResponseResult.error("添加失败！");
     }

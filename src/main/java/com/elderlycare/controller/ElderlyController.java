@@ -96,7 +96,7 @@ public class ElderlyController {
     public ResponseResult<Elderly> addElderly(@RequestBody Elderly elderly) {
         //保存老人信息
         if (elderlyService.save(elderly)) {
-            return ResponseResult.success(null, "添加成功！");
+            return ResponseResult.success(elderly, "添加成功！");
         }
         return ResponseResult.error("添加失败！");
     }

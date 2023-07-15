@@ -94,7 +94,7 @@ public class EmployeeController {
     public ResponseResult<Employee> addEmployee(@RequestBody Employee employee) {
         //保存工作人员信息
         if (employeeService.save(employee)) {
-            return ResponseResult.success(null, "添加成功！");
+            return ResponseResult.success(employee, "添加成功！");
         }
         return ResponseResult.error("添加失败！");
     }
