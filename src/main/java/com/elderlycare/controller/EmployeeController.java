@@ -41,6 +41,7 @@ public class EmployeeController {
     @PreAuthorize("hasAnyAuthority('system:use')")
     @ApiOperation(value = "工作人员详情接口", notes = "根据id查询工作人员信息")
     @ApiImplicitParams({
+            @ApiImplicitParam(name = "employeeId", value = "工作人员id", required = true),
     })
     public ResponseResult<Employee> getEmployeeById(@PathVariable("employeeId") Long employeeId) {
         Employee employee = employeeService.getById(employeeId);
@@ -154,8 +155,7 @@ public class EmployeeController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "year", value = "统计年份", required = true)
     })
-    public ResponseResult<Map<String, Object>> getEmployeeTimeStatistics(Integer year) {
-
+    public ResponseResult<Map<String, Object>> getEmployeeTimeStatistics(@RequestParam("year") Integer year) {
         return employeeService.getEmployeeTimeStatistics(year);
     }
 

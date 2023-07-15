@@ -43,6 +43,7 @@ public class ElderlyController {
     @PreAuthorize("hasAnyAuthority('system:use')")
     @ApiOperation(value = "老人详情接口", notes = "根据id查询老人信息")
     @ApiImplicitParams({
+            @ApiImplicitParam(name = "elderlyId", value = "老人id", required = true),
     })
     public ResponseResult<Elderly> getElderlyById(@PathVariable("elderlyId") Long elderlyId) {
         Elderly elderly = elderlyService.getById(elderlyId);

@@ -42,6 +42,7 @@ public class EventController {
     @PreAuthorize("hasAnyAuthority('system:use')")
     @ApiOperation(value = "事件详情接口", notes = "根据id查询事件信息")
     @ApiImplicitParams({
+            @ApiImplicitParam(name = "eventId", value = "事件id", required = true),
     })
     public ResponseResult<Event> getEventById(@PathVariable("eventId") Long eventId) {
 //        Event event = eventService.getById(eventId);
@@ -176,8 +177,9 @@ public class EventController {
     @PreAuthorize("hasAnyAuthority('system:use')")
     @ApiOperation(value = "事件发生地点数据统计接口", notes = "根据事件发生地点数据进行统计")
     @ApiImplicitParams({
+            @ApiImplicitParam(name = "year", value = "统计年份", required = true),
     })
-    public ResponseResult<Map<String, Object>> getEventLocationStatistics(Integer year) {
+    public ResponseResult<Map<String, Object>> getEventLocationStatistics(@RequestParam("year") Integer year) {
         return eventService.getEventLocationStatistics(year);
     }
 

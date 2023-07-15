@@ -70,16 +70,16 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.lqyrmk.emovie.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.elderlycare.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("E-Movie系统")
+                .title("智慧养老系统")
                 .version("1.0")
-                .description("E-Movie系统接口文档")
+                .description("智慧养老系统信息管理端接口文档")
                 .build();
     }
 

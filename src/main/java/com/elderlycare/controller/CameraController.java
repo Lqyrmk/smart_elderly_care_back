@@ -41,6 +41,7 @@ public class CameraController {
     @PreAuthorize("hasAnyAuthority('system:use')")
     @ApiOperation(value = "摄像头详情接口", notes = "根据id查询摄像头信息")
     @ApiImplicitParams({
+            @ApiImplicitParam(name = "cameraId", value = "摄像头id", required = true),
     })
     public ResponseResult<Camera> getCameraById(@PathVariable("cameraId") Long cameraId) {
         Camera camera = cameraService.getById(cameraId);

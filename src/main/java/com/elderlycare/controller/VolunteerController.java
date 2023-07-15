@@ -43,6 +43,7 @@ public class VolunteerController {
     @PreAuthorize("hasAnyAuthority('system:use')")
     @ApiOperation(value = "义工详情接口", notes = "根据id查询义工信息")
     @ApiImplicitParams({
+            @ApiImplicitParam(name = "volunteerId", value = "义工id", required = true)
     })
     public ResponseResult<Volunteer> getVolunteerById(@PathVariable("volunteerId") Long volunteerId) {
         Volunteer volunteer = volunteerService.getById(volunteerId);
@@ -156,7 +157,7 @@ public class VolunteerController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "year", value = "统计年份", required = true)
     })
-    public ResponseResult<Map<String, Object>> getVolunteerTimeStatistics(Integer year) {
+    public ResponseResult<Map<String, Object>> getVolunteerTimeStatistics(@RequestParam("year") Integer year) {
 
         return volunteerService.getVolunteerTimeStatistics(year);
     }
