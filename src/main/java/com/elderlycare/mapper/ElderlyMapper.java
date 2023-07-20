@@ -5,7 +5,6 @@ import com.elderlycare.entity.Elderly;
 import com.elderlycare.entity.Event;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @Description
@@ -31,7 +30,7 @@ public interface ElderlyMapper extends BaseMapper<Elderly> {
      * @param: [elderlyAgeLowerLimits]
      * @return: int
      **/
-    int countByAgeLessThan(@RequestParam("elderlyAgeLowerLimits") Integer elderlyAgeLowerLimits);
+    int countByAgeLessThan(@Param("elderlyAgeLowerLimits") Integer elderlyAgeLowerLimits);
 
     /**
      * @description: 统计大于等于某个年龄的老人数量

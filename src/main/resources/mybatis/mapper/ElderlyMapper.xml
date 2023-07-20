@@ -12,7 +12,7 @@
         where elderly_id = #{elderlyId}
     </select>
 
-    <!--int countByAgeLessThan(@RequestParam("elderlyAgeLowerLimits") Integer elderlyAgeLowerLimits);-->
+    <!--int countByAgeLessThan(@Param("elderlyAgeLowerLimits") Integer elderlyAgeLowerLimits);-->
     <select id="countByAgeLessThan" resultType="int">
         SELECT COUNT(*)
         FROM `elderly`
